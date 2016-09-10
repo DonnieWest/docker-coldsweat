@@ -3,9 +3,11 @@ FROM debian:jessie
 RUN apt-get update
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get install -y --no-install-recommends python python-pip
+RUN apt-get install -y --no-install-recommends python python-pip git
 
-ADD coldsweat /coldsweat
+
+RUN git clone https://github.com/passiomatic/coldsweat.git /coldsweat
+
 ADD customization/config /coldsweat/etc/config
 
 WORKDIR /coldsweat
